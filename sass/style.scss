@@ -1,0 +1,719 @@
+// ==============================
+// 変数
+// ==============================
+
+$site-width:1640px;
+$site-width--common:1230px;
+$site-width--narrow:1080px;
+
+$font-color--catch: #ffffff;
+$font-color--main: #0d253e;
+
+$font-size_3s: 18px;
+$font-size_xxs: 20px;
+$font-size_xs: 22px;
+$font-size_s: 24px;
+$font-size_m: 28px;
+$font-size_l: 30px;
+$font-size_xl: 38px;
+$font-size_xxl: 46px;
+$font-size_3l: 60px;
+
+$font-weight--middle: 300;
+$font-weight--heavy: 500;
+
+$breakpoints: ('sm': 'screen and (max-width: 600px)',
+'lg': 'screen and (max-width: 1200px)',
+'xl': 'screen and (max-width: 1640px)',
+) !default;
+
+// ==============================
+// mixin
+// ==============================
+
+@mixin mq($breakpoint: sm) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+
+// ==============================
+// 共通設定
+// ==============================
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+html,
+body {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+// 画面がスマホサイズの際に文字を折り返すためのクラス
+.br-sm {
+  display: none;
+
+  @include mq() {
+    display: block;
+  }
+}
+
+
+// ==============================
+// wrapper(画面幅に応じて要素の幅を変更するためのクラス）
+// ==============================
+
+.wrapper {
+  max-width: $site-width--common;
+  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+// 最大幅が狭いセクション用
+.wrapper--narrow {
+  max-width: $site-width--narrow;
+}
+
+
+// ==============================
+// hero
+// ==============================
+
+.hero {
+  background-image: url(../images/deathto-stock-medium-6@2x.jpg);
+  background-size: $site-width;
+  margin: 0 auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 630px;
+}
+
+
+// ==============================
+// header
+// ==============================
+
+.site-header {
+  padding-top: 28px;
+}
+
+.site-header__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__item:first-child {
+  @include mq(lg) {
+    display: none;
+  }
+}
+
+.nav__item:not(:last-child) {
+  @include mq() {
+    display: none;
+  }
+}
+
+.nav__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav__link {
+  margin-left: 58px;
+
+  @include mq() {
+    margin-left: 0;
+  }
+
+  color: $font-color--catch;
+  font-size: $font-size_3s;
+  font-weight: $font-weight--heavy;
+  letter-spacing: 1px;
+}
+
+
+// ==============================
+// catch(PC画像のセクション）
+// ==============================
+
+.catch {
+  padding-top: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.catch__title {
+  color: $font-color--catch;
+  font-size: $font-size_xxl;
+  text-shadow: 0 0 30px rgba(13, 37, 62, 0.7);
+  font-weight: $font-weight--middle;
+  line-height: 1.17;
+  padding-bottom: 77px;
+}
+
+
+// ==============================
+// linkBtn(青と黄色のボタン）
+// ==============================
+
+.linkBtn {
+  font-size: $font-size_xxs;
+
+  @include mq() {
+    font-size: $font-size_3s;
+  }
+
+  font-weight: $font-weight--heavy;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: $font-color--catch;
+}
+
+.linkBtn--plan {
+  font-size: $font-size_xxs;
+
+  @include mq(lg) {
+    font-size: $font-size_3s - 2px;
+  }
+
+  @include mq() {
+    font-size: $font-size_3s;
+  }
+
+  font-weight: $font-weight--heavy;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: $font-color--catch;
+}
+
+.linkBtn--bg-color-primary {
+  background-color: #1e88f5;
+  box-shadow: 0 0 30px 0 rgba(30, 136, 245, 0.9);
+}
+
+.linkBtn--bg-color-secondary {
+  background-color: #ffcc01;
+  box-shadow: 0 0 20px 0 rgba(254, 203, 1, 0.4);
+}
+
+.linkBtn--pd-s {
+  padding: 18px 28px;
+}
+
+.linkBtn--pd-m {
+  padding: 20px 39px;
+
+  @include mq() {
+    padding: 20px 20px;
+  }
+}
+
+.linkBtn--pd-l {
+  padding: 20px 51px;
+
+  @include mq(lg) {
+    padding: 20px 5px;
+  }
+
+  @include mq() {
+    padding: 20px 10px;
+  }
+}
+
+// ==================================
+// info(タイトルが「〜,100%web」のセクション）
+// ==================================
+
+.info {
+  padding-top: 131px;
+  padding-bottom: 131px;
+
+  @include mq() {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+}
+
+.info__inner {
+  text-align: center;
+  margin-bottom: 73px;
+
+  @include mq() {
+    margin-bottom: 56px;
+
+  }
+}
+
+.heading {
+  color: $font-color--main;
+  font-size: $font-size_xl;
+  font-weight: $font-weight--middle;
+
+  &--mb-m {
+    margin-bottom: 19px;
+  }
+
+  &--mb-l {
+    margin-bottom: 27px;
+  }
+}
+
+.heading__text {
+  opacity: 0.4;
+  font-size: $font-size_xs;
+  font-weight: $font-weight--middle;
+  line-height: 1.36;
+  color: $font-color--main;
+}
+
+
+// ==================================
+// detail(円形の部品があるセクション）
+// ==================================
+
+.detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.detail--top-circle {
+  margin-top: calc(95px - 35px);
+
+  @include mq() {
+    margin-top: 0;
+  }
+
+  align-items: flex-start;
+}
+
+.detail__unit {
+  text-align: center;
+  position: relative;
+  width: 33%;
+
+  @include mq() {
+    margin-bottom: 60px;
+    width: 100%;
+  }
+}
+
+.detail__unit--mb-l {
+  margin-bottom: 95px;
+
+  @include mq() {
+    margin-bottom: 60px;
+  }
+}
+
+.detail__title {
+  font-size: $font-size_m;
+  font-weight: $font-weight--middle;
+  color: $font-color--main;
+  margin-top: 29px;
+}
+
+.detail__title--mb-l {
+  margin-bottom: 35px;
+}
+
+.detail__title--mt-none {
+  margin-top: 0;
+
+}
+
+.detail__title--color-sub {
+  color: #1e88f5;
+}
+
+.detail__text {
+  opacity: 0.4;
+  font-size: $font-size_xs;
+  font-weight: $font-weight--middle;
+  line-height: 1.36;
+  color: $font-color--main;
+  margin-top: 4px;
+}
+
+.detail__text--mb {
+  margin-bottom: 33px;
+}
+
+.detail__text--ghost {
+  visibility: hidden;
+
+  @include mq() {
+    display: none;
+  }
+}
+
+.detail__circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: solid 6px #ffffff;
+  background-color: #f4f8fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+}
+
+.detail__circle--small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 0 rgba(255, 204, 1, 0.4);
+  background-color: #ffcc01;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 4%;
+  right: -3%;
+}
+
+
+// ==================================
+// concept(建築物が背景のセクション）
+// ==================================
+
+.concept {
+  background-image: url(../images/bitmap@2x.jpg);
+  background-size: $site-width;
+  background-position: left;
+
+  @include mq(lg) {
+    background-position: top;
+  }
+
+  background-repeat: no-repeat;
+  max-width: 1640px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-bottom: 108px;
+
+  @include mq(lg) {
+    margin-bottom: 90px;
+    justify-content: center;
+  }
+}
+
+.concept__inner {
+  text-align: center;
+  margin: auto;
+
+  @include mq(lg) {
+    padding: 221px 15px 135px;
+  }
+}
+
+.concept__top-title {
+  text-shadow: 0 0 50px #0d253e;
+  font-size: $font-size_xxl;
+  font-weight: $font-weight--middle;
+  color: $font-color--catch;
+  margin-bottom: 50px;
+  text-align: left;
+
+  @include mq(lg) {
+    text-align: center;
+  }
+}
+
+.concept__menu {
+  padding-right: 20px;
+
+  @include mq(lg) {
+    padding: 110px 15px 0;
+  }
+}
+
+.concept__unit {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 60px 10px rgba(13, 37, 62, 0.1);
+  text-align: left;
+  height: 230px;
+  padding: 55px 69px 55px 59px;
+
+  @include mq(lg) {
+    height: unset;
+    width: 100%;
+    padding: 23px 15px;
+  }
+
+  box-sizing: border-box;
+}
+
+.concept__unit:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.concept__title {
+  font-size: $font-size_l;
+  font-weight: $font-weight--middle;
+  color: $font-color--main;
+  margin-bottom: 21px;
+}
+
+.concept__text {
+  opacity: 0.4;
+  font-size: 22px;
+  font-weight: $font-weight--middle;
+  line-height: 1.45;
+  color: $font-color--main;
+
+}
+
+// ==================================
+// plan(縦長のカードのセクション）
+// ==================================
+
+.plan {
+  margin: 0 auto 139px;
+
+  @include mq() {
+    margin-bottom: calc(130px - 60px);
+  }
+}
+
+.plan__top {
+  text-align: center;
+  margin-bottom: 95px;
+
+  @include mq() {
+    margin-bottom: 60px;
+  }
+}
+
+.plan__container {
+  margin: 0 auto;
+  margin-bottom: 140px;
+
+  @include mq() {
+    margin-bottom: (90px - 50px);
+  }
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.plan__list {
+  border-radius: 4px;
+  box-shadow: 0 20px 60px 10px rgba(13, 37, 62, 0.05);
+  border: solid 1px #eeeeee;
+  background-color: #ffffff;
+  text-align: center;
+  padding-bottom: 80px;
+  width: calc(50% - 30px);
+
+  @include mq() {
+    width: 100%;
+    margin-bottom: 50px;
+    padding-bottom: 60px;
+  }
+}
+
+.plan__term {
+  border-radius: 4px;
+  box-shadow: 0 2px 30px 0 rgba(30, 136, 245, 0.3);
+  background-color: #1e88f5;
+  text-align: center;
+}
+
+.plan__titile {
+  font-size: $font-size_3l;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: $font-color--catch;
+  margin-bottom: 63px;
+
+  &>span {
+    font-size: $font-size_3s;
+    vertical-align: middle;
+  }
+
+  &::before {
+    content: attr(data-subtitle-top);
+    display: block;
+    font-size: $font-size_m;
+    font-weight: $font-weight--middle;
+    letter-spacing: 6px;
+    color: $font-color--catch;
+    padding: 56px 0 8px;
+  }
+
+  &::after {
+    content: attr(data-subtitle-bottom);
+    display: block;
+    font-size: $font-size_3s;
+    font-weight: $font-weight--middle;
+    line-height: 1.67;
+    color: $font-color--catch;
+    padding: 25px 0 27px;
+  }
+}
+
+.plan__desc {
+  display: flex;
+  align-items: center;
+  margin-bottom: 34px;
+  margin-left: 40px;
+  position: relative;
+
+  &::before {
+    content: url('../images/shape.svg');
+    position: absolute;
+    top: -14px;
+  }
+}
+
+.plan__desc--pseudo-color-secondary .plan__desc {
+  &::before {
+    content: url('../images/shape-yellow.svg')
+  }
+}
+
+.plan__desc-text {
+  opacity: 0.9;
+  font-size: $font-size_xs;
+  font-weight: $font-weight--middle;
+  line-height: 1.36;
+  color: $font-color--main;
+  text-align: left;
+  margin-left: 72px;
+
+  &::after {
+    content: attr(data-sub-text);
+    display: block;
+    opacity: 0.9;
+    font-size: $font-size_xxs;
+    font-weight: $font-weight--middle;
+    line-height: 1.36;
+    color: $font-color--main;
+    text-align: left;
+  }
+}
+
+.plan__btn {
+  margin-top: 81px;
+}
+
+hr {
+  border: solid 1px #eeeeee;
+}
+
+// ==================================
+// footer
+// ==================================
+
+.site-footer {
+  padding-top: 75px;
+  padding-bottom: 75px;
+
+  @include mq() {
+    padding-top: 95px;
+    padding-bottom: 153px;
+  }
+
+  &__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.site-footer__logo {
+  @include mq() {
+    margin: 0 auto 43px;
+  }
+}
+
+.site-footer__list {
+  width: 70%;
+
+  @include mq() {
+    width: 100%;
+  }
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.site-footer__column {
+  text-align: left;
+
+  @include mq() {
+    flex: calc(50% - 11px);
+  }
+}
+
+.site-footer__column:nth-child(odd) {
+  @include mq() {
+    margin-right: 21px;
+  }
+}
+
+.site-footer__link {
+  opacity: 0.25;
+  font-size: $font-size_3s;
+
+  @include mq() {
+    font-size: $font-size_3s - 3px;
+  }
+
+  line-height: 42px;
+  font-weight: $font-weight--heavy;
+  letter-spacing: 1px;
+  color:$font-color--main;
+
+}
+
+// ==================================
+// Utility
+// ==================================
+
+.bg-color--main {
+  background-color: #ffffff;
+}
+
+.bg-color--primary {
+  background-color: #1e88f5;
+}
+
+.bg-color--secondary {
+  background-color: #ffcc01;
+}
+
+/*# sourceMappingURL=style.css.map */
